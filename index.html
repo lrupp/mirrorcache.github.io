@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>MirrorCache</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='/css/Open_Sans.css' rel='stylesheet' type='text/css'>
+    <script src="/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/foundation.min.css">
+    <link rel="stylesheet" href="/css/motion-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/css/github-light.css" media="screen">
+    <style>
+      div.hidden_content, div.hidden_faq {
+        visibility: hidden;
+        display: none;
+      }
+      div.show_content {
+        visibility: inline;
+        display: inline;
+      }
+      #navbar {
+        list-style-type: none;
+      }
+      #navbar li {
+        display: inline;
+      }
+      a.faq {
+        color: #159957
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">MirrorCache</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/openSUSE/mirrorcache" class="btn">View on GitHub</a>
+      <a href="https://github.com/openSUSE/mirrorcache/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/openSUSE/mirrorcache/tarball/master" class="btn">Download .tar.gz</a>
+      <a href="https://software.opensuse.org/package/MirrorCache" class="btn">Download RPM package</a>
+    </section>
+
+    <section class="main-content">
+      <ul id=navbar>
+        <li>
+          <a href='#about' id='about-btn' class="btn_highlighted nav_btn" onclick=switch_to('about')>About</a>
+        </li>
+        <li>
+          <a href='#getting_started' id='getting_started-btn' class="btn_dark nav_btn" onclick=switch_to('getting_started')>Getting Started</a>
+        </li>
+        <li>
+          <a href='#overview_and_concept' id='overview_and_concept-btn' class="btn_dark nav_btn" onclick=switch_to('overview_and_concept')>Overview and Concept</a>
+        </li>
+        <li>
+          <a href='#faq' id='faq-btn' class="btn_dark nav_btn" onclick=switch_to('faq')>FAQ / Known Issues</a>
+        </li>
+      </ul>
+
+<!-- About --> 
+<div id=about-div class="page_container show_content">
+  <h1>
+    <a id="disclaimer" class="anchor" href="#disclaimer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is MirrorCache?
+  </h1>
+  <p>MirrorCache is a Web Server for files download, which will route download requests to an appropriate mirror. MirrorCache doesn’t store files and instead keeps in DB list of files from the Main Server.</p>
+  <p>According to Wikipedia "Cache - is a component that stores data so that future requests for that data can be served faster". In this regard MirrorCache is a cache of (meta)information about geographical location of files.</p>
+  <p>"Cache hit" means that MirrorCache was able to redirect to proper (the closest) mirror. "Cache miss" means that MirrorCache had to redirect request to the Main Server.</p>
+</div>
+
+<!-- Getting started --> 
+<div id=getting_started-div class="page_container hidden_content">
+    <h1><a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h1>
+    <h2><a id="automatic-installation-with-yast-one-click-install" class="anchor" href="#automatic-installation-with-yast-one-click-install" aria-hidden="true">
+      <span aria-hidden="true" class="octicon octicon-link"></span></a>Automatic installation with yast one-click-install</h2>
+    <p>Simply search on <a id=ymp_link href="https://software.opensuse.org/package/MirrorCache">software.opensuse.org</a> for your distribution and install the package</p>
+
+    <h2><a id="manual-installation" class="anchor" href="#manual-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Manual installation</h2>
+    <h3><a id="install-opensuse" class="anchor" href="#install-opensuse" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>openSUSE</h3>
+    <pre>
+     <code>
+# AS USER root
+zypper ar -f obs://openSUSE:infrastructure:MirrorCache MirrorCache
+zypper ref -s
+zypper in MirrorCache
+     </code>
+    </pre>
+</div>
+
+<!-- Overview and Concept -->
+<div id=overview_and_concept-div class="hidden_content page_container">
+    <h1>
+    <a id="overview-and-concept" class="anchor" href="#overview-and-concept" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview and Concept</h1>
+    <p>Here is the perfect place to provide a nice picture of the process...</p>
+    <img src="img/flow.svg" height=200px"/>
+</div>
+
+<!-- FAQ --> 
+<div id=faq-div  class="hidden_content page_container">
+    <h1>
+      <a id="faq-href" class="anchor" href="#faq-href" aria-hidden="true">
+      <span aria-hidden="true" class="octicon octicon-link"></span></a>
+      FAQ
+    </h1>
+    <h2>
+      <a id="a-where_can_i_find_further_docu" class="anchor faq" href="#where_can_i_find_further_docu" aria-hidden="true" onclick='open_faq(this.id)'>
+      <span aria-hidden="true" class="octicon octicon-link"></span>
+      Where can I find further documentation about MirrorCache?</a>
+    </h2>
+    <div class="faq-div" id=div-where_can_i_find_further_docu>
+      <ul>
+        <li>The <a href="https://github.com/openSUSE/MirrorCache/wiki">MirrorCache wiki</a> has some documentation about the installation.</li>
+        <li>The <a href="https://github.com/openSUSE/MirrorCache/doc/">GitHub Repository</a> contains some special documentation files.</li>
+      </ul>
+    </div>
+
+
+<!-- Footer --> 
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/openSUSE/mirrorcache">MirrorCache</a> is an <a href="https://opensuse.org/">openSUSE</a> project.</span>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+<script src="/js/foundation.min.js"></script>
+<script>
+function switch_to(container_id) {
+
+  var t_btn = $(this);
+
+  $('.nav_btn').each(function() {
+     console.log($(this).text());
+     $(this).removeClass("btn_highlighted");
+     $(this).addClass("nav_btn btn_dark");
+  });
+
+  $('#'+container_id+"-btn").removeClass("btn_dark")
+  $('#'+container_id+"-btn").addClass("nav_btn btn_highlighted")
+
+  $('.page_container').each(function() {
+     console.log(this.id);
+     $(this).removeClass("show_content");
+     $(this).addClass("page_container hidden_content");
+  });
+
+  $('#'+container_id+"-div").removeClass("hidden_content");
+  $('#'+container_id+"-div").addClass("page_container show_content");
+
+}
+function open_faq(container_id) {
+  var cid = container_id.substring(2);
+  console.log("Container ID:"+cid);
+  var t_btn = $(this);
+
+  $('.faq-div').each(function() {
+     var t_id =  $(this).attr('id').substring(4);
+
+     console.log( t_id + " != "+ cid);
+     if ( t_id != cid ) {
+     	$(this).addClass("hidden_faq");
+     }
+  });
+
+  $('#div-'+cid).toggleClass("hidden_faq shown_faq")
+
+}
+function switch_to_anchor() {
+  var anchor = window.location.hash.substring(1);
+  console.log(anchor);
+  if ( anchor ) {
+  	switch_to(anchor);
+  }
+}
+
+// initialize foundation
+$(document).foundation();
+
+// document.ready()
+$(function() {
+  switch_to_anchor();
+});
+</script>
+ 
+  </body>
+</html>
